@@ -16,6 +16,10 @@ module.exports = {
   plugins: [
 
   ],
+  eslint:{
+    fix:true,
+    configFile:require.resolve(__dirname,'../.eslintrc')
+  }
   module: {
     rules: [{
         test: /\.css$/,
@@ -43,7 +47,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(js|jsx)$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
