@@ -1,25 +1,41 @@
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const DIST_PATH = path.resolve(__dirname, '../dist');
-const DIR_PATH = path.resolve(__dirname, '../src');
+const BUILD_PATH = path.resolve(__dirname, '../dist');
+const SRC_PATH = path.resolve(__dirname, '../src');
 const env = process.argv.env;
 
 module.exports = {
-  entry: path.resolve(__dirname, '../src/homeWork/index.jsx'),
+  entry: {
+    index: path.resolve(__dirname, '../src/homeWork/index'),
+    vendor: ['react', 'react-dom']
+  },
   output: {
-    path: path.join(__dirname, '../dist'),
-    filename: '[name].bundle.js',
-    publicPath: DIST_PATH,
+    path: BUILD_PATH,
+    filename: '[name].min.js',
+    publicPath: '',
     sourceMapFilename: '[name].map'
   },
   plugins: [
-
+    new HtmlWebpackPlugin({
+      title: 'home work',
+      template:path.resolve(__dirname,'../src/homeWork/index.html')
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      filename: 'vendor.min.js'
+    }),
+    new ExtractTextPlugin({
+      filename: 'index.min.css',
+      allChunks: true
+    })
   ],
-  eslint:{
-    fix:true,
-    configFile:require.resolve(__dirname,'../.eslintrc')
-  }
+  // eslint: {
+  //   fix: true,
+  //   configFile: path.resolve(__dirname, '../.eslintrc')
+  // },
   module: {
     rules: [{
         test: /\.css$/,
@@ -35,12 +51,6 @@ module.exports = {
         ]
       },
       {
-        test: /\.(js|jsx)$/,
-        use: [
-          'file-loader'
-        ]
-      },
-      {
         test: /\.json$/,
         use: [
           'json-loader'
@@ -48,14 +58,19 @@ module.exports = {
       },
       {
         test: /\.jsx?$/,
+        // enforce: "pre",
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['env']
-          }
-        }
+        use: ['babel-loader']
+        // use: {
+        //   loader: 'babel-loader',
+        //   options: {
+        //     presets: ['env']
+        //   }
+        //}
       }
     ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx', '.css']
   }
 }
