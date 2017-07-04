@@ -1,10 +1,11 @@
 const path = require('path');
 const DIST_PATH = path.resolve(__dirname, '../dist');
-module.exports = require('./base.js');
+var baseConfig = require('./base.js');
+var config =Object.assign({},baseConfig,{
+  devtool:'cheap-module-source-map'
+});
 
-module.exports.devtool = 'cheap-module-source-map';
-
-module.exports.devServer = {
+config.devServer = {
   port: 7777,
   host: 'localhost',
   historyApiFallback: true,
@@ -14,3 +15,4 @@ module.exports.devServer = {
   publicPath: DIST_PATH,
   hot: true,
 };
+module.exports= config;
