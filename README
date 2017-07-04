@@ -1,4 +1,15 @@
 readme
 babel-preset-es2015
-babel-preset-runtime
+babel-plugin-transform-runtime
 minimist
+babel-preset-stage-0
+babel-eslint
+babel-polyfill
+eslint
+eslint-loader
+eslint-plugin-react
+extract-text-webpack-plugin
+eslint-config-airbnb
+transfer-webpack-plugin
+react-router
+whatwg-fetch
