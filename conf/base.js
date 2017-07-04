@@ -21,7 +21,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'home work',
-      template:path.resolve(__dirname,'../src/homeWork/index.html')
+      template: path.resolve(__dirname, '../src/homeWork/index.html')
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
@@ -58,7 +58,17 @@ module.exports = {
       },
       {
         test: /\.jsx?$/,
-        // enforce: "pre",
+        enforce: 'pre',
+        exclude: /node_modules/,
+        use: {
+          loader: 'eslint-loader',
+          options: {
+            emitError: true,
+          }
+        },
+      },
+      {
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: ['babel-loader']
         // use: {

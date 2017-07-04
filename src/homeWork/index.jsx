@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import LoginVIew from './components/login/index';
 import './style.css';
 
-class MainContent extends React.Component {
+export class MainContent extends React.Component {
     render() {
         return (<div>
-            <h1>Hello Word 1 !</h1>
+            <LoginVIew />
         </div>);
     }
 }

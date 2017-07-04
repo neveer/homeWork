@@ -1,3 +1,4 @@
 
 node_modules/.bin/babylon
 node_modules/.bin/babylon.cmd
+node_modules/.bin/acorn.cmd
