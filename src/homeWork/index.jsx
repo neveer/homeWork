@@ -1,12 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import LoginVIew from './components/login/index';
+import LoginView from './components/login/index';
+import ContentView from './components/content/index';
 import './style.css';
 
-export class MainContent extends React.Component {
+export default class MainContent extends React.Component {
+    constructor(prop){
+        super(prop);
+        this.state={
+            cookie:null,
+            session:null
+        }
+    }
+    onLogin=?(value)=>{
+    }
     render() {
-        return (<div>
-            <LoginVIew />
+        return (<div className="mainContent">
+                {
+                    this.state.session?<ContentView />:<LoginView  onLogin={this.onLogin}/>
+                }
+            
         </div>);
     }
 }
@@ -14,6 +27,4 @@ export class MainContent extends React.Component {
 
 ReactDOM.render(
     <MainContent />,
-    document.getElementById('app'),function(cb){
-
-    });
+    document.getElementById('app'));
