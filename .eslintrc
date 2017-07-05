@@ -11,10 +11,10 @@
   "no-param-reassign":"off",
   "jsx-a11y/href-no-hash":"off",
   "jsx-a11y/anchor-is-valid":["warn":{"aspects":["invalidHref"]}],
-  "impot/extensionso":[0],
+  "impot/extensions":[0],
   "react/forbid-prop-types":0,
   "react/no-danger":0,
-  "":[
+  "max-len":[
      2,
      200,
      4,
