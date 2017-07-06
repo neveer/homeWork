@@ -1,0 +1,18 @@
+.ant-tabs-nav-wrap{
+    height: 40px;
+}
+.contentView-home-table{
+    padding-top: 10px;
+}
+.contentView-userInfo{
+    text-align: right;
+        padding-right: 20px;
+    padding-top: 15px;
+}
+.contentView-userInfo-span{
+    padding-right: 10px;
+    font-size: 20px;
+    font-weight: 600;
+}
+.contentView-Dashboards-chart{
+}

@@ -1,2 +1,24 @@
 1.development scripts:npm run dev
 2.dist scripts:npm run prod 
+
+"Module build failed: Error: /react-template/node_modules/eslint-config-airbnb/rules/react-a11y.js: ESLint configuration is invalid: - Unexpected top-level property "ecmaFeatures"."
+
+You have to edit react-a11y.js and react.js located in ./node_modules/.bin/eslint-config-airbnb/rules/
+In react-a11y.js remove:
+
+ecmaFeatures: {
+  jsx: true
+},
+and replace it with:
+
+parserOptions: {
+  ecmaFeatures: {
+    jsx: true,
+  },
+},
+In react.js just remove:
+
+ecmaFeatures: {
+  jsx: true
+},
+

@@ -5,26 +5,32 @@ import ContentView from './components/content/index';
 import './style.css';
 
 export default class MainContent extends React.Component {
-    constructor(prop){
+    constructor(prop) {
         super(prop);
-        this.state={
-            cookie:null,
-            session:null
+        this.state = {
+            userName: '',
+            cookie: null,
+            session: null,
+            logon: false,
+        };
+    }
+    onLogin = (value, userId) => {
+        if (value && value === 'success') {
+            this.setState({ cookie: userId, session: userId, logon: true, userName: userId });
         }
     }
-    onLogin=?(value)=>{
+    onLogOut=()=>{
+         this.setState({ cookie: null, session: null, logon: false, userName: '' });
     }
     render() {
         return (<div className="mainContent">
-                {
-                    this.state.session?<ContentView />:<LoginView  onLogin={this.onLogin}/>
-                }
-            
+            {
+                this.state.logon ? <ContentView userName={this.state.userName} onLogOut={this.onLogOut} /> : <LoginView onLogin={this.onLogin} />
+            }
         </div>);
     }
 }
 
 
-ReactDOM.render(
-    <MainContent />,
+ReactDOM.render(<MainContent />,
     document.getElementById('app'));

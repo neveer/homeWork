@@ -10,7 +10,7 @@ const env = process.argv.env;
 module.exports = {
   entry: {
     index: path.resolve(__dirname, '../src/homeWork/index'),
-    vendor: ['react', 'react-dom']
+    vendor: ['react', 'react-dom', 'antd', 'lodash']
   },
   output: {
     path: BUILD_PATH,
@@ -39,10 +39,10 @@ module.exports = {
   module: {
     rules: [{
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: "css-loader"
+        })
       },
       {
         test: /\.(png|svg|jpg|gif)$/,

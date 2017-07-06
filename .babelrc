@@ -1,6 +1,5 @@
 {
     "presets": [
-        
         "es2015",
         "stage-0",
         //"stage-1",
@@ -12,17 +11,17 @@
         [
             "import",
             {
-                "style":"css",
-                "libraryName":"antd"
+                "style": "css",
+                "libraryName": "antd"
             }
         ],
         [
-        "transform-runtime",
+            "transform-runtime",
             {
-                "polyfill":true,
-                "regenerator":true
+                "polyfill": true,
+                "regenerator": true
             }
-            ],
+        ],
         ["transform-decorators-legacy"]
     ]
 }
